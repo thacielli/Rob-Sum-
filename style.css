@@ -70,20 +70,25 @@ footer{
 }
 @media screen and (max-width: 896px){
 	body{
-	    background-position: left;
-	    background-attachment: fixed;
-	    background-repeat: no-repeat;
+		background-repeat: no-repeat;
+    	margin:9px;
+	}
+	h1{
+		padding: 17px;
+    	font-size: 47px;
+	}
+	#list{
+		display: contents;
+		font-size: 16px;
 	}
 
 }
 
 @media screen and (max-width: 500px){
 	body{
-	    background-position: left;
-	    background-attachment: fixed;
 	    background-repeat: no-repeat;
-    	margin:0px;
-		padding:0px;
+    	margin:9px;
+		
 	}
 
 }

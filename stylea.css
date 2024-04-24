@@ -47,7 +47,7 @@ h1{
 #list{
 	text-align: center;
 	padding: 0 60px;
-	font-size: 18px;
+	font-size: 33px;
 }
 .art{
 	font-family: Roboto Slab;
@@ -84,4 +84,26 @@ img{
 	font-size: 8px;
 	text-align: center;
 	display: block;
+}
+@media screen and (max-width: 896px){
+	a{
+		font-size: 39px;
+	}
+	#list{
+		display: contents;
+		font-size: 39px;
+	}
+
+}
+
+@media screen and (max-width: 500px){
+	body{
+	    background-repeat: no-repeat;
+    	margin:9px;
+		
+	}
+	#list{
+		display: contents;
+		font-size: 39px;
+	}
 }
