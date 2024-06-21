@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    body {
+      padding: 20px 14px 20px;
+      background-color: #0e0e0e;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+    #container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-top: 50px; /* Ajuste de margem para centralizar na vertical */
+    }
+    .quadrado-ex2 {
+        width: 622px;
+        height: 622px;
+        border: 2px solid #181818;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* position: relative; */
+        rotate: 51deg;
+        transition: transform 0.3s ease-out;
+        border-radius: 3%;
+    }
+    .circulo-externo {
+      width: 737px;
+      height: 577px;
+      rotate: 310deg;
+      border: 2px solid #181818; /* Linha fina clara */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease-out;
+    }
+    .quadrado-externo {
+      width: 440px;
+      height: 440px;
+      border: 2px solid #181818; /* Linha fina clara */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: transform 0.3s ease-out;
+      border-radius: 3%
+    }
+    .quadrado-ext1 {
+      width: 440px;
+      height: 440px;
+      border: 2px solid #181818; /* Linha fina clara */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      transition: transform 0.3s ease-out;
+      border-radius: 3%;
+      transform: rotate(52deg);
+    }
+    .circulo-meio {
+      width: 470px;
+      height: 440px;
+      border: 2px solid #181818; /* Linha fina clara */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.3s ease-out;
+    }
+    .quadrado-interno-rotate {
+      width: 225px;
+      height: 225px;
+      border: 2px solid #181818; /* Linha fina clara */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(80deg);
+      transition: transform 0.3s ease-out;
+      border-radius: 3%
+    }
+
+    .quadrado-interno-rotate2 {
+      width: 225px;
+      height: 225px;
+      border: 2px solid #181818; /* Linha fina clara */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(59deg);
+      transition: transform 0.3s ease-out;
+      border-radius: 3%
+    }
+    .quadrado-interno-rotate3 {
+      width: 225px;
+      height: 225px;
+      border: 2px solid #181818; /* Linha fina clara */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(14deg);
+      transition: transform 0.3s ease-out;
+      border-radius: 3%
+    }
+    
+    .elemento:hover .quadrado-interno-rotate {
+      transform: translate(-50%, -50%) rotate(440deg);
+    }
+    .elemento:hover .quadrado-interno-rotate2 {
+      transform: rotate(354deg);
+    }
+    #footer {
+      display: flex;
+      justify-content: center; /* Centraliza horizontalmente */
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    #autor2 {
+      position: absolute;
+      bottom: 20px;
+      right: 138px;
+    }
+    #autor1 {
+      position: absolute;
+      bottom: 20px;
+      left: 67px;
+    }
+    #botao-pagina {
+      margin-right: 100px;
+      background-color: #fbb2b200;
+      color: #9a9595;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    #botao-pagina:hover {
+      background-color: #636363;
+    }
+    .texto-central{
+      font-size: 21px;
+    }
+    .test{
+      align-self: stretch;
+      font-size: 35px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="quadrado-ext1 elemento"></div>
+      <div class="quadrado-ex2 elemento">
+          <div class="circulo-externo elemento">
+              <div class="quadrado-externo elemento">
+                <h1 class="test"> Robô Sumô &nbsp;</h1>
+                <div class="circulo-meio elemento">
+                  <div class="quadrado-interno-rotate elemento"></div>
+                  <div class="quadrado-interno-rotate2 elemento"></div>
+                  <div class="quadrado-interno-rotate3 elemento"></div>
+                  <span class="texto-central">Amplified Avenger<br> <br>IFTM 2024</span>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div id="autor2">Luiz Gustavo Mazala</div>
+    <div>
+      <button id="botao-pagina" onclick="window.location.href='pag2.html';">Click</button></div>
+    <div id="autor1">Thacielli Ferreira Pires</div>
+  </div>
+  <script>
+    const elementos = document.querySelectorAll('.elemento');
+
+    elementos.forEach(elemento => {
+      elemento.addEventListener('mousemove', () => {
+        elemento.querySelector('.quadrado-interno-rotate').style.transform = 'translate(-50%, -50%) rotate(440deg)';
+        elemento.querySelector('.quadrado-interno-rotate2').style.transform = 'translate(-50%, -50%) rotate(354deg)';
+        elemento.querySelector('.quadrado-externo').style.transform = 'rotate(360deg)';
+      });
+      elemento.addEventListener('mouseleave', () => {
+        elemento.querySelector('.quadrado-interno-rotate').style.transform = 'translate(-50%, -50%) rotate(80deg)';
+        elemento.querySelector('.quadrado-interno-rotate2').style.transform = 'translate(-50%, -50%) rotate(59deg)';
+        elemento.querySelector('.quadrado-externo').style.transform = 'rotate(0deg)';
+      });
+    });
+  </script>
+</body>
+</html>
