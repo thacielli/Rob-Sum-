@@ -6,7 +6,7 @@
   <title>Encerramento</title>
   <style>
     body {
-      background-color: #333;
+      background: linear-gradient(to bottom, #333, #28435f, #495358, #28435f, #333333);
       color: #c3c3c3;
       margin: 0;
       padding: 0;
@@ -77,6 +77,50 @@
       box-shadow: 7px 5px 4px 0px rgb(255 244 244 / 33%);
       padding: 11px 47px 12px 47px;
     }
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5); /* Cor de fundo para os controles */
+      color: #070707;
+      border: none;
+      width: 20px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .carousel-control.prev {
+      left: 47px;
+    }
+    .carousel-control.next {
+      right: 47px;
+    }
+    .carousel-control:hover {
+      background-color: rgba(0, 0, 0, 0.8); /* Cor de fundo ao passar o mouse */
+    }
+    .carousel img {
+      width: 100%; /* Garante que a imagem ocupa toda a largura do carousel */
+      display: block;
+    }
+    .carousel-indicators {
+        text-align: center;
+        margin-top: 5px;
+        margin-left: 19px;
+    }
+    .carousel-indicator {
+        background-color: #bbb;
+        border: none;
+        width: 4px;
+        height: 6px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 3px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .carousel-indicator.active {
+        background-color: #717171;
+    }
     
   </style>
 </head>
@@ -97,6 +141,13 @@
           <div class="slide"><img src="imag3.jpg" alt="Imagem 2"></div>
           <div class="slide"><img src="proj38.jpeg" alt="Imagem 3"></div>
         </div>
+          <button class="carousel-control prev" onclick="prevSlide()">&#8249;</button>
+          <button class="carousel-control next" onclick="nextSlide(1)">&#8250;</button>
+          <div class="carousel-indicators">
+            <button class="carousel-indicator" onclick="currentSlide(1, 1)"></button>
+            <button class="carousel-indicator" onclick="currentSlide(2, 1)"></button>
+            <button class="carousel-indicator" onclick="currentSlide(3, 1)"></button>
+          </div>
       </div>
     </div>
     <div>
@@ -123,15 +174,14 @@
       if (projetoIndex === 1) {
         slideIndex1 = slideIndex;
       }
-      timers[projetoIndex - 1] = setTimeout(() => showSlides(projetoIndex), 4000); // Muda a cada 4 segundos
+      timers[projetoIndex - 1] = setTimeout(() => showSlides(projetoIndex), 3000); // Muda a cada 3 segundos
     }
 
-   
-    
     // Inicia o carrossel automaticamente ao carregar a página
     document.addEventListener('DOMContentLoaded', () => {
       showSlides(1); // Inicia com o primeiro projeto
     });
   </script>
+  
 </body>
 </html>
