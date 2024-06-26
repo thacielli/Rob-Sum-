@@ -6,7 +6,6 @@
   <title>Campeonatos</title>
   <style>
     body {
-        background-color: #333;
         color: #c3c3c3;
         margin: 16px;
         padding: 5px;
@@ -15,6 +14,7 @@
         align-items: center;
         justify-content: center;
         min-height: 100vh;
+        background: linear-gradient(to bottom, #333, #28435f, #495358, #28435f, #333333);
     }
     .titulo {
         font-size: 42px;
@@ -59,9 +59,7 @@
         width: 100%;
         margin-right: 20px;
     }
-    .carousel-item:last-child {
-        margin-right: 0;
-    }
+    
     .carousel-item img {
         width: 100%;
         height: 410px;
@@ -89,11 +87,31 @@
     .carousel-control {
         background-color: rgb(130 130 130 / 50%);
         border: none;
-        padding: 10px;
+        padding: 5px;
         cursor: pointer;
+        transform: translateY(-50%);
+        font-size: 17px;
     }
     .carousel-control:hover {
         background-color: rgba(0, 0, 0, 0.7);
+    }
+    .carousel-indicators {
+        text-align: center;
+        margin-top: 5px;
+    }
+    .carousel-indicator {
+        background-color: #bbb;
+        border: none;
+        width: 4px;
+        height: 6px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 3px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .carousel-indicator.active {
+        background-color: #717171;
     }
     .cat{
         margin-right: 166px;
@@ -158,9 +176,15 @@
       </div>
     </div>
     <div class="carousel-controls">
-      <button class="carousel-control" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
-      <button class="carousel-control" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
-    </div>
+        <button class="carousel-control" onclick="prevSlide()">&#8249;</button>
+        <button class="carousel-control" onclick="nextSlide()">&#8250;</button>
+      </div>
+      <div class="carousel-indicators">
+        <button class="carousel-indicator" onclick="currentSlide(1)"></button>
+        <button class="carousel-indicator" onclick="currentSlide(2)"></button>
+        <button class="carousel-indicator" onclick="currentSlide(3)"></button>
+        <button class="carousel-indicator" onclick="currentSlide(4)"></button>
+      </div>
   </div>
 	<div class="cat">
         <h3>Regras Básicas:</h3>
@@ -190,27 +214,31 @@
     let timer;
 
     function showSlides() {
-      const slides = document.querySelectorAll('.carousel-item');
-      slides.forEach(slide => slide.style.display = 'none');
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1; }
-      slides[slideIndex - 1].style.display = 'block';
-      timer = setTimeout(showSlides, 4000); // Muda a cada 4 segundos 
+        const slides = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+
+        slides.forEach(slide => slide.style.display = 'none');
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1; }
+
+        slides[slideIndex - 1].style.display = 'block';
+        indicators[slideIndex - 1].classList.add('active');
+
+        timer = setTimeout(showSlides, 3000); // Muda a cada 3 segundos
     }
 
-    function nextSlide() {
-      clearTimeout(timer);
-      slideIndex++;
-      showSlides();
+    function currentSlide(n) {
+        clearTimeout(timer);
+        slideIndex = n;
+        showSlides();
     }
 
-    function prevSlide() {
-      clearTimeout(timer);
-      slideIndex--;
-      showSlides();
-    }
+
 
     document.addEventListener('DOMContentLoaded', showSlides);
   </script>
+  
 </body>
 </html>
