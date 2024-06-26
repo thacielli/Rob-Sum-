@@ -8,7 +8,7 @@
     body {
       padding: 20px 14px 20px;
       background-color: #0e0e0e;
-      color: #fff;
+      color: #f3ebeb;
       margin: 0;
       padding: 0;
       display: flex;
@@ -16,6 +16,8 @@
       align-items: center;
       justify-content: space-between;
       min-height: 100vh;
+      cursor: none;
+      background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.6) -34%, rgba(0, 0, 0, 0.95) 82%);
     }
     #container {
       display: flex;
@@ -36,6 +38,19 @@
         transition: transform 0.3s ease-out;
         border-radius: 3%;
     }
+    .circulo-ext1{
+      width: 771px;
+      height: 737px;
+      border: 2px solid #181818; /* Linha fina clara */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease-out;
+    }
+    .circulo-ext1:hover {
+      transform: scale(1.1); /* Escala aumentada ao passar o mouse */
+    }
     .circulo-externo {
       width: 737px;
       height: 577px;
@@ -46,6 +61,9 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.3s ease-out;
+    }
+    .circulo-externo:hover {
+      transform: scale(1.1); /* Escala aumentada ao passar o mouse */
     }
     .quadrado-externo {
       width: 440px;
@@ -127,20 +145,45 @@
       transition: transform 0.3s ease-out;
       border-radius: 3%
     }
+
+    /* Estilos para os textos */
+    .texto-central {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 21px;
+      text-align: center;
+    }
+
+    .test {
+      position: absolute;
+      top: 23%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 35px;
+      text-align: center;
+    }
     
+    /* Efeitos de hover para os quadrados internos */
     .elemento:hover .quadrado-interno-rotate {
       transform: translate(-50%, -50%) rotate(440deg);
     }
     .elemento:hover .quadrado-interno-rotate2 {
-      transform: rotate(354deg);
+      transform: translate(-50%, -50%) rotate(354deg);
     }
+    .elemento:hover .quadrado-externo {
+      transform: rotate(360deg);
+    }
+    
+    /* Estilos do rodapé */
     #footer {
       display: flex;
       justify-content: center; /* Centraliza horizontalmente */
       align-items: center;
       width: 100%;
       padding: 20px;
-      position: absolute;
+      position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
@@ -168,58 +211,94 @@
       border: none;
       border-radius: 5px;
       transition: background-color 0.3s;
+      position: relative; 
+      z-index: 1;
     }
     #botao-pagina:hover {
       background-color: #636363;
     }
-    .texto-central{
-      font-size: 21px;
-    }
-    .test{
-      align-self: stretch;
-      font-size: 35px;
+    #linha-branca {
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      margin-top: 20px;
+      opacity: 0;
+      transition: width 0.5s ease-out, opacity 0.3s ease-out;
+      position: absolute;
+      top: 50%; 
+      left: 0;
+      right: 0;
     }
   </style>
 </head>
 <body>
   <div id="container">
-    <div class="quadrado-ext1 elemento"></div>
+    <div class="circulo-ext1 elemento">
+      <div class="quadrado-ext1 elemento"></div>
       <div class="quadrado-ex2 elemento">
-          <div class="circulo-externo elemento">
-              <div class="quadrado-externo elemento">
-                <h1 class="test"> Robô Sumô &nbsp;</h1>
-                <div class="circulo-meio elemento">
-                  <div class="quadrado-interno-rotate elemento"></div>
-                  <div class="quadrado-interno-rotate2 elemento"></div>
-                  <div class="quadrado-interno-rotate3 elemento"></div>
-                  <span class="texto-central">Amplified Avenger<br> <br>IFTM 2024</span>
-                </div>
-              </div>
-            </div>
+        <div class="circulo-externo elemento">
+          <div class="quadrado-externo elemento"></div>
+          <div class="circulo-meio elemento">
+            <div class="quadrado-interno-rotate elemento"></div>
+            <div class="quadrado-interno-rotate2 elemento"></div>
+            <div class="quadrado-interno-rotate3 elemento"></div>
+          </div>
         </div>
+      </div>
     </div>
+    <h1 class="test elemento">Robô Sumô</h1>
+    <span class="texto-central elemento">Amplified Avenger<br><br>IFTM 2024</span>
   </div>
+
   <div id="footer">
     <div id="autor2">Luiz Gustavo Mazala</div>
     <div>
-      <button id="botao-pagina" onclick="window.location.href='pag2.html';">Click</button></div>
-    <div id="autor1">Thacielli Ferreira Pires</div>
+      <button id="botao-pagina" onmousedown="iniciarAnimacao()">Click</button>
+      <div id="linha-branca"></div>
+    </div>
+    <div id="autor1">Thacielli Ferreira</div>
   </div>
-  <script>
-    const elementos = document.querySelectorAll('.elemento');
 
+  <script>
+    var pos = document.documentElement;
+    pos.addEventListener('mousemove', e =>{
+      pos.style.setProperty('--x', e.clientX + 'px')
+      pos.style.setProperty('--y', e.clientY + 'px')
+    })
+
+    const elementos = document.querySelectorAll('.elemento');
+  
     elementos.forEach(elemento => {
       elemento.addEventListener('mousemove', () => {
+        // Transformações dos quadrados internos
         elemento.querySelector('.quadrado-interno-rotate').style.transform = 'translate(-50%, -50%) rotate(440deg)';
         elemento.querySelector('.quadrado-interno-rotate2').style.transform = 'translate(-50%, -50%) rotate(354deg)';
         elemento.querySelector('.quadrado-externo').style.transform = 'rotate(360deg)';
       });
       elemento.addEventListener('mouseleave', () => {
+        // Reset das transformações dos quadrados internos
         elemento.querySelector('.quadrado-interno-rotate').style.transform = 'translate(-50%, -50%) rotate(80deg)';
         elemento.querySelector('.quadrado-interno-rotate2').style.transform = 'translate(-50%, -50%) rotate(59deg)';
         elemento.querySelector('.quadrado-externo').style.transform = 'rotate(0deg)';
       });
     });
+
+    function iniciarAnimacao() {
+      const linhaBranca = document.getElementById('linha-branca');
+      const larguraPagina = document.body.scrollWidth; // largura total da página
+      
+      // Mostra a linha branca
+      linhaBranca.style.opacity = '1';
+      
+      // Anima a linha branca para cobrir toda a largura da página
+      linhaBranca.style.width = `${larguraPagina}px`;
+      
+      // Espera a animação terminar antes de redirecionar para a próxima página
+      setTimeout(function() {
+        window.location.href = 'pag2.html';
+      }, 500); // Tempo ajustado para coincidir com a transição CSS
+    }
   </script>
+  
 </body>
 </html>
