@@ -183,6 +183,20 @@
     document.addEventListener('DOMContentLoaded', () => {
       showSlides(1); // Inicia com o primeiro projeto
     });
+
+    function prevSlide() {
+      slideIndex1 -= 2; // Ajusta o índice para mostrar o slide anterior
+      showSlides(1);
+    }
+
+    function nextSlide() {
+      showSlides(1);
+    }
+
+    function currentSlide(n, projetoIndex) {
+      slideIndex = n - 1; // Ajusta o índice para o slide atual
+      showSlides(projetoIndex);
+    }
   </script>
   
 </body>
